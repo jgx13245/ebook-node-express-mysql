@@ -1,0 +1,63 @@
+<% include ../header.html %>
+
+<section class="titlebar">
+<div class="container">
+	<div class="sixteen columns">
+		<h2>购物车</h2>
+
+		<nav id="breadcrumbs">
+			<ul>
+				<li><a href="/">首页</a></li>
+				<li>购物车</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+</section>
+
+
+<div class="container cart" style="margin-top: 50px;">
+
+	<div class="sixteen columns">
+
+		<!-- Cart -->
+		<table class="cart-table responsive-table">
+
+			<tr>
+				<th>#</th>
+				<th>书籍名称</th>
+				<th>所属分类</th>
+				<th></th>
+			</tr>
+			<% var k = 0; %>
+			<% for (var i in chanpinList) { %>
+				<% k++; %>
+  			<tr>
+  				<td>
+						<%= k %>
+          </td>
+					<td class="cart-title"><a href="/detail/<%= chanpinList[i].id %>"><%= chanpinList[i].place %></td>
+  				<td>
+							<% for (var j in fenleiList) { %>
+								<% if (chanpinList[i].fenlei == fenleiList[j].id) { %>
+									<%= fenleiList[j].name %>
+								<% } %>
+							<% } %>
+  				</td>
+  				<td class="cart-total item-allprice">
+						<a class="button" href="/detail/<%= chanpinList[i].id %>">查看书籍详情</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="button" href="/readbook/<%= chanpinList[i].id %>">立即阅读</a>
+					</td>
+  			</tr>
+      <% } %>
+
+			</table>
+	</div>
+
+
+
+</div>
+
+<div class="margin-top-40"></div>
+
+<% include ../footer.html %>

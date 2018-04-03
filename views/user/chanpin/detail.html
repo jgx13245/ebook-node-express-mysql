@@ -1,0 +1,164 @@
+<% include ../header.html %>
+
+<section class="titlebar">
+<div class="container">
+	<div class="sixteen columns">
+		<h2>书籍详情</h2>
+	</div>
+</div>
+</section>
+
+
+<div class="container">
+
+<!-- Slider
+================================================== -->
+	<div class="eight columns" >
+		<div class="slider-padding">
+			<div id="product-slider" class="royalSlider rsDefault">
+        <% for (var i in imgList) { %>
+			    <img class="rsImg" src="<%= imgList[i].url %>" data-rsTmb="<%= imgList[i].url %>" alt="" />
+        <% } %>
+			 </div>
+			 <div class="clearfix"></div>
+		</div>
+	</div>
+
+
+<!-- Content
+================================================== -->
+	<div class="eight columns">
+		<div class="product-page">
+
+			<!-- Headline -->
+			<section class="title">
+				<h2><%= chanpinInfo.place %></h2>
+				<h4>收藏量：<%= scNum[0].num %></h4>
+			</section>
+
+			<!-- Text Parapgraph -->
+			<section>
+				<p class="margin-reset"><%= chanpinInfo.introduce.substring(0, 140) %>
+          <% if (chanpinInfo.introduce.length > 140) { %>......<% } %>
+        </p>
+
+				<div class="clearfix"></div>
+
+			</section>
+				</div>
+				<div class="clearfix"></div>
+
+
+			<div class="share-buttons" style="margin-top: 30px;">
+					<ul>
+						<% if (name) { %>
+							<% if (isShouCang.length > 0) { %>
+								<li class="btn-qxscsj" data-chanpinid="<%= chanpinInfo.id %>"><a href="javascript:;">取消收藏</a></li>
+							<% } else { %>
+								<li class="btn-scsj" data-chanpinid="<%= chanpinInfo.id %>"><a href="javascript:;">收藏该书籍</a></li>
+							<% } %>
+						<% } else { %>
+							<li><a href="/reglogin">请您先登录</a></li>
+						<% } %>
+					</ul>
+				</div>
+				<div style="margin-top: 30px;">
+					<ul>
+						<% if (name) { %>
+							<li><a class="button" href="/readbook/<%= chanpinInfo.id %>">立即阅读</a></li>
+						<% } %>
+					</ul>
+				</div>
+				
+		</div>
+	</div>
+
+</div>
+
+
+<div class="container">
+	<div class="sixteen columns">
+			<!-- Tabs Navigation -->
+			<ul class="tabs-nav">
+				<li class="active"><a href="#tab1">详细介绍</a></li>
+				<li><a href="#tab2">其他属性</a></li>
+				<li><a href="#tab3">评论 <span class="tab-reviews">(<%= pinglunList.length %>)</span></a></li>
+			</ul>
+
+			<!-- Tabs Content -->
+			<div class="tabs-container">
+
+				<div class="tab-content" id="tab1">
+					<p><%= chanpinInfo.introduce %></p>
+				</div>
+
+				<div class="tab-content" id="tab2">
+
+					<table class="basic-table">
+						<tr>
+							<th>所属分类</th>
+							<td>
+								<%= chanpinInfo.fenleiname %>
+              </td>
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="tab-content" id="tab3">
+
+					<!-- Reviews -->
+					<section class="comments">
+
+						<ul>
+							<% if (pinglunList.length > 0) { %>
+								<% for (var i in pinglunList) { %>
+									<li>
+										<div class="avatar"><img src="/user/images/ttt.png" alt="" /></div>
+										<div class="comment-content"><div class="arrow-comment"></div>
+											<div class="comment-by"><strong><%= pinglunList[i].name %></strong><span class="date"><%= pinglunList[i].time %></span>
+											</div>
+											<p><%= pinglunList[i].content %></p>
+										</div>
+									</li>
+								<% } %>
+							<% } else { %>
+								<div class="panel-body">
+									<div class="no-datacon">
+										<div class="no-data"><img src="/public/img/no-data.png"/></div>
+									</div>
+								</div>
+							<% } %>
+						 </ul>
+						 <% if (name) { %>
+
+						<a href="#small-dialog" class="popup-with-zoom-anim button color">添加评论</a>
+						<% } %>
+
+						<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+							<h3 class="headline">添加评论</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
+
+							<!-- Form -->
+							<form class="add-comment">
+								<fieldset><div>
+										<label>评论内容: <span>*</span></label>
+										<textarea cols="40" rows="3" name="pinglun-content"></textarea>
+									</div>
+
+								</fieldset>
+
+									<a href="javascript:;" class="button color btn-addpinglun" data-chanpinid="<%= chanpinInfo.id %>">添加评论</a>
+								<div class="clearfix"></div>
+
+							</form>
+						</div>
+
+					</section>
+
+				</div>
+
+			</div>
+	</div>
+</div>
+
+<% include ../footer.html %>

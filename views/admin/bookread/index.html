@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="icon" href="/user/images/logo.png" type="image/x-icon">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="/bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/bootstrap/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen">
+    <link rel="stylesheet" href="/bootstrap/css/owl.carousel.css" type="text/css">
+    <link href="/bootstrap/css/style.css" rel="stylesheet">
+    <link href="/bootstrap/css/style-responsive.css" rel="stylesheet">
+    <link href="/public/css/public.css" rel="stylesheet">
+    <link href="/public/css/sweet-alert.css" rel="stylesheet">
+    <link href="/public/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="/bootstrap/js/jquery.js"></script>
+    <script src="/bootstrap/js/jquery-1.8.3.min.js"></script>
+    <script src="/public/js/sweet-alert.min.js"></script>
+    <link href="/public/css/summernote-bs3.css" rel="stylesheet" />
+    <link href="/public/css/summernote.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header white-bg">
+        <!-- <div class="sidebar-toggle-box">
+        <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+      </div> -->
+        <a href="javascript:;" class="logo">书籍阅读</a>
+        <div class="top-nav">
+            <ul class="nav pull-right top-menu">
+                <% if (usertype == 'zuojia' && isZuoZhe.userid == uid) { %>
+                    <li class="btn-addzj" data-chanpinid="<%= chanpinid %>">
+                        <a href="javascript:;">
+                            <span class="username">添加新章节</span>
+                        </a>
+                    </li>
+                    <li class="btn-updatezj">
+                        <a href="javascript:;">
+                            <span class="username">修改本章节</span>
+                        </a>
+                    </li>
+                    <li class="btn-deletezj">
+                        <a href="javascript:;">
+                            <span class="username">删除本章节</span>
+                        </a>
+                    </li>
+                <% } %>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                        <span class="username">欢迎您，
+                            <%= name %>
+                        </span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <li>
+                            <a href="/admin/logout">
+                                <i class="icon-key"></i> 退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <aside>
+        <div id="sidebar" class="nav-collapse read-leftnav">
+            <ul class="sidebar-menu">
+                <li style="margin-bottom: 20px;">
+                    <h1 style="font-size: 24px; color: #fff;">章节列表</h1>
+                </li>
+                <% for (var i in zjList) { %>
+                    <li class="read-leftli" data-zjid="<%= zjList[i].id %>">
+                        <i class="icon-book"></i>
+                        <span>
+                            <%= zjList[i].zjname %>
+                        </span>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </aside>
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                        </header>
+                        <div class="panel-body" id='zjcon'>
+                            <% if (zjList.length == 0) { %>
+                                <div class="panel-body">
+                                    <div class="no-datacon">
+                                        <div class="no-data">
+                                            <img src="/public/img/no-data.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/jquery.scrollTo.min.js"></script>
+<script src="/bootstrap/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="/bootstrap/js/jquery.sparkline.js" type="text/javascript"></script>
+<script src="/bootstrap/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="/bootstrap/js/owl.carousel.js"></script>
+<script src="/bootstrap/js/jquery.customSelect.min.js"></script>
+<script src="/bootstrap/js/common-scripts.js"></script>
+<script src="/bootstrap/js/sparkline-chart.js"></script>
+<script src="/bootstrap/js/easy-pie-chart.js"></script>
+<script src="/public/layer/layer.js"></script>
+<script src="/public/datetimepicker/moment-with-locales.js"></script>
+<script src="/public/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="/public/js/public.js"></script>
+<script src="/travel/js/admin/pub.js"></script>
+<script src="/travel/js/admin/admin.js"></script>
+<script src="/public/js/summernote.min.js"></script>
+<script>
+    $(function () {
+        $('.read-leftli').eq(0).click();
+    });
+</script>
+
+</html>

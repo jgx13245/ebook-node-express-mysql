@@ -1,0 +1,158 @@
+<% include ../header.html %>
+
+    <div class="container">
+
+        <!-- Tabs
+    ================================================= -->
+        <div class="sixteen columns">
+            <h3 class="headline">我的订单</h3>
+            <span class="line margin-bottom-3-"></span>
+            <div class="clearfix"></div>
+
+            <!-- Tabs Navigation -->
+            <ul class="tabs-nav">
+                <li class="active">
+                    <a href="#tab1">未处理订单</a>
+                </li>
+                <li>
+                    <a href="#tab2">已处理订单</a>
+                </li>
+                <!-- <li>
+                    <a href="#tab3">Tab #3</a>
+                </li> -->
+            </ul>
+
+            <!-- Tabs Content -->
+            <div class="tabs-container">
+                <div class="tab-content" id="tab1">
+                    <div class="container cart">
+
+                        <div class="sixteen columns">
+                            <% if (wcldingdanList.length > 0) { %>
+                                <table class="cart-table responsive-table">
+
+                                    <tr>
+                                        <th><%= wcldingdanList.length %>个未处理订单</th>
+                                        <th>服装标题</th>
+                                        <th>服装属性</th>
+                                        <th>订单数量</th>
+                                        <th>订单总价</th>
+                                        <th>订单时间</th>
+                                    </tr>
+                                    <% for (var i in wcldingdanList) { %>
+                                        <tr>
+                                            <td>
+                                                <% for (var j in dingdanimgList) { %>
+                                                    <% if (dingdanimgList[j].chanpinid = wcldingdanList[i].chanpinid) { %>
+                                                        <img src="<%= dingdanimgList[j].url %>" alt="" style="height: 90px;">
+                                                    <% } %>
+                                                <% } %>
+                                            </td>
+                                            <td class="cart-title">
+                                                <a href="/detail/<%= wcldingdanList[i].chanpinid %>">
+                                                    <%= wcldingdanList[i].place %>
+                                                </a>
+                                            </td>
+                                            <td>尺寸：
+                                                <%= wcldingdanList[i].size %>&nbsp;&nbsp;&nbsp;&nbsp;颜色：
+                                                    <%= wcldingdanList[i].color %>
+                                            </td>
+                                            <td>
+                                                <%= wcldingdanList[i].num %>
+                                            </td>
+                                            <td>
+                                                <%= wcldingdanList[i].allprice %>
+                                            </td>
+                                            <td>
+                                                <%= wcldingdanList[i].time %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                </table>
+                            <% } else { %>
+                                <div class="panel-body">
+                                    <div class="no-datacon">
+                                        <div class="no-data"><img src="/public/img/no-data.png"/></div>
+                                    </div>
+                                </div>
+                            <% } %>
+                            <br>
+                            <div class="clearfix"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-content" id="tab2">
+                    <div class="container cart">
+
+
+                        <div class="sixteen columns">
+                            <% if (ycldingdanList.length > 0) { %>
+                                <table class="cart-table responsive-table">
+                                        <tr>
+                                                <th><%= ycldingdanList.length %>个已处理订单</th>
+                                                <th>服装标题</th>
+                                                <th>服装属性</th>
+                                                <th>订单数量</th>
+                                                <th>订单总价</th>
+                                                <th>订单时间</th>
+                                            </tr>
+                                            <% for (var i in ycldingdanList) { %>
+                                                <tr>
+                                                    <td>
+                                                        <% for (var j in dingdanimgList) { %>
+                                                            <% if (dingdanimgList[j].chanpinid = ycldingdanList[i].chanpinid) { %>
+                                                                <img src="<%= dingdanimgList[j].url %>" alt="" style="height: 90px;">
+                                                            <% } %>
+                                                        <% } %>
+                                                    </td>
+                                                    <td class="cart-title">
+                                                        <a href="/detail/<%= ycldingdanList[i].chanpinid %>">
+                                                            <%= ycldingdanList[i].place %>
+                                                        </a>
+                                                    </td>
+                                                    <td>尺寸：
+                                                        <%= ycldingdanList[i].size %>&nbsp;&nbsp;&nbsp;&nbsp;颜色：
+                                                            <%= ycldingdanList[i].color %>
+                                                    </td>
+                                                    <td>
+                                                        <%= ycldingdanList[i].num %>
+                                                    </td>
+                                                    <td>
+                                                        <%= ycldingdanList[i].allprice %>
+                                                    </td>
+                                                    <td>
+                                                        <%= ycldingdanList[i].time %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+
+                                </table>
+                            <% } else { %>
+                                <div class="panel-body">
+                                    <div class="no-datacon">
+                                        <div class="no-data"><img src="/public/img/no-data.png"/></div>
+                                    </div>
+                                </div>
+                            <% } %>
+                            <br>
+                            <div class="clearfix"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <div class="tab-content" id="tab3">Suspendisse ut laoreet massa. Etiam vel dolor eu quam varius tempor eu eu mi. Duis auctor interdum ligula
+                    ut faucibus. Vivamus lorem ipsum dolor sit amet in tincidunt augue. Aenean at ligula justo, sed gravida
+                    metus. </div> -->
+            </div>
+
+            <br>
+        </div>
+
+        <div class="clearfix"></div>
+        <br>
+    </div>
+
+    <% include ../footer.html %>

@@ -1,0 +1,143 @@
+<% include ../header.html %>
+
+<!-- Slider
+================================================== -->
+<div class="container fullwidth-element home-slider">
+
+	<div class="tp-banner-container">
+		<div class="tp-banner">
+			<ul>
+				<!-- Slide 1  -->
+				<li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+					<img src="/user/images/slider4.jpg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+ 					<div class="caption sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+						<h2>电子书查阅</h2><br>
+						<h4 style="color: #fff;">人的影响短暂而微弱,书的影响则广泛而深远。</h4>
+					</div>
+				</li>
+
+				<!-- Slide 2  -->
+				<li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000">
+ 					<img src="/user/images/slider5.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+ 					<div class="caption dark sfb fadeout" data-x="750" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+						<h2>读一本书</h2>
+						<h3>书是人类进步的阶梯</h3>
+					</div>
+				</li>
+
+				<!-- Slide 3  -->
+				<li data-transition="fadetotopfadefrombottom" data-slotamount="7" data-masterspeed="1000">
+ 					<img src="/user/images/parallax_03.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+ 					<div class="caption dark sfb fadeout" data-x="850" data-y="170" data-speed="400" data-start="800"  data-easing="Power4.easeOut">
+						<h2 style="color: #fff;">读书</h2>
+						<h3 style="color: #fff;">书籍是人类知识的总统</h3>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container">
+
+	<div class="sixteen columns">
+		<h3 class="headline">最新书籍</h3>
+		<span class="line margin-bottom-0"></span>
+	</div>
+
+	<div id="new-arrivals" class="showbiz-container sixteen columns" >
+
+		<!-- Navigation -->
+		<div class="showbiz-navigation">
+			<div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+			<div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+		</div>
+		<div class="clearfix"></div>
+
+		<!-- Products -->
+		<div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1">
+			<div class="overflowholder">
+
+				<ul>
+
+					<% for (var i in chanpinList) { %>
+						<li>
+						<figure class="product">
+							<div class="product-discount">
+								<% for (var j in fenleiList) { %>
+									<% if (chanpinList[i].fenlei == fenleiList[j].id) { %>
+										<%= fenleiList[j].name %>
+									<% } %>
+								<% } %>
+							</div>
+							<div class="mediaholder">
+								<a href="/detail/<%= chanpinList[i].id %>">
+									<img alt="" src="<%= chanpinList[i].url %>">
+									<div class="cover">
+										<img alt="" src="<%= chanpinList[i].url %>">
+									</div>
+								</a>
+								<a href="/detail/<%= chanpinList[i].id %>" class="product-button"><i class="fa fa-eye"></i></a>
+							</div>
+
+							<a href="javascript:;">
+								<section>
+									<!-- <span class="product-category">Skirts</span> -->
+									<h5>《<%= chanpinList[i].place %>》</h5>
+								</section>
+							</a>
+						</figure>
+					</li>
+					<% } %>
+
+				</ul>
+				<div class="clearfix"></div>
+
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- Parallax Banner
+================================================== -->
+<div class="parallax-banner fullwidth-element"  data-background="#000" data-opacity="0.45" data-height="200">
+	<img src="/user/images/parallax.jpg" alt="" />
+	<div class="parallax-overlay"></div>
+	<div class="parallax-title">读好书，<span>可以在不知不觉间净化我们的心灵。</span></div>
+</div>
+
+<div class="clearfix"></div>
+
+
+<!-- Latest Articles
+================================================== -->
+<div class="container" >
+
+	<!-- Headline -->
+	<div class="sixteen columns" >
+		<h3 class="headline">读书新闻</h3>
+		<span class="line margin-bottom-30"></span>
+	</div>
+
+	<% for (var i in newsList) { %>
+		<div class="four columns">
+			<article class="from-the-blog">
+				<section class="from-the-blog-content">
+					<a href="blog-single-post.html"><h5><%= newsList[i].title %></h5></a>
+					<i><%= newsList[i].time %></i>
+					<span><%= newsList[i].content %></span>
+				</section>
+			</article>
+		</div>
+	<% } %>
+</div>
+
+<div class="margin-top-50"></div>
+
+<% include ../footer.html %>
